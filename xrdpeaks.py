@@ -20,9 +20,9 @@ def update_spec_from_peaks(spec, model_indicies, peak_widths=(10, 25), **kwargs)
             raise NotImplemented(f'model {basis_func["type"]} not implemented yet')
     return peak_indicies
 
-def xrdpeaks(filename)
-x,y=ReadRas(filename)
-spec = {
+def xrdpeaks(filename):
+    x,y=ReadRas(filename)
+    spec = {
     'x': x,
     'y': y,
     'model': [
@@ -34,11 +34,13 @@ spec = {
         {'type': 'GaussianModel'},
         {'type': 'GaussianModel'},
         {'type': 'GaussianModel'},
-    ]
-}
+        ]
+    }
 
-peaks_found = update_spec_from_peaks(spec, [0, 1, 2, 3, 4, 5, 6], peak_widths=(50,))
-fig, ax = plt.subplots()
-ax.scatter(spec['x'], spec['y'], s=4)
-for i in peaks_found:
-    ax.axvline(x=spec['x'][i], c='black', linestyle='dotted')
+    peaks_found = update_spec_from_peaks(spec, [0, 1, 2, 3, 4, 5, 6], peak_widths=(50,))
+    fig, ax = plt.subplots()
+    ax.scatter(spec['x'], spec['y'], s=4)
+    for i in peaks_found:
+        ax.axvline(x=spec['x'][i], c='black', linestyle='dotted')
+    return peaks_found
+    
