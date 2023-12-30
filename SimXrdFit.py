@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy import optimize, signal
-pip install lmfit
+#pip install lmfit
 from lmfit import models
 
 def open_ras_file(filename):
